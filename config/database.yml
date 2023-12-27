@@ -20,6 +20,10 @@ default: &default
 
 development:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: protospace_40182_development
 
 # Warning: The database defined as "test" will be erased and
@@ -27,8 +31,12 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
   database: protospace_40182_test
-
+  
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -51,6 +59,8 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
   database: protospace_40182_production
   username: protospace_40182
   password: <%= ENV["PROTOSPACE_40182_DATABASE_PASSWORD"] %>
